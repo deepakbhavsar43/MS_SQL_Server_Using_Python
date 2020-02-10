@@ -1,6 +1,6 @@
 from Packages import *
 
-cursor = connect(server, database, username, password)
+cursor = conn.connect(server, database, username, password)
 
 
 class CRUD:
@@ -11,15 +11,15 @@ class CRUD:
         for row in table:
             print(row)
 
-    def Insert(self):
-        Insert_query = '''INSERT INTO Customer(FirstName, LastName, Age, City)
-                          VALUES(?,?,?,?);'''
+    def Insert(self, table_name, data):
+        Insert_query = f'''INSERT INTO {table_name}(ProductName, Price)
+                          VALUES(?,?);'''
 
-        for row in Customer_data:
-            values = (row[0], row[1], row[2], row[3])
-            cursor.execute(Insert_query, values)
+        for row in data:
+            value = (row[0], row[1])
+            cursor.execute(Insert_query, value)
 
-        conn.commit()
+        cursor.commit()
 
 # o = CRUD()
 # o.DisplayTable('Customer')

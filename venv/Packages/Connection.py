@@ -1,16 +1,17 @@
 import pyodbc
+class connectingDB:
+    # Establishing connection with database
+    def connect(self, server, database, username, password):
+        conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; \
+                               SERVER=' + server + '; \
+                               DATABASE=' + database + '; \
+                               UID=' + username + '; \
+                               PWD=' + password + '; \
+                               Trusted_Connection = yes;')
+        # create cursor
+        return conn.cursor()
 
-# Establishing connection with database
-def connect(server, database, username, password):
-    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; \
-                           SERVER=' + server + '; \
-                           DATABASE=' + database + '; \
-                           UID=' + username + '; \
-                           PWD=' + password + '; \
-                           Trusted_Connection = yes;')
-    # create cursor
-    return conn.cursor()
-
+conn = connectingDB()
 # Insert_query = '''INSERT INTO Customer(FirstName, LastName, Age, City)
 #                   VALUES(?,?,?,?);'''
 #
