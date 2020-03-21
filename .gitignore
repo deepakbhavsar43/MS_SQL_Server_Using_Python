@@ -1,0 +1,6 @@
+#Pycharm files which need to be ignored#
+########################################
+
+/venv/*
+.idea/*
+__pycache__/*
